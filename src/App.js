@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import useForm from './hooks/useForm';
+
+const intialValue = false;
 
 function App() {
+  const [ darkMode, handleToggle] = useForm(intialValue);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+    <div className={darkMode ? 'App darkmode' : 'App'}>
+      <div className='nav-bar'>
+        <div
+          className='darkmode-bar'
+          onClick={handleToggle}
         >
-          Learn React
-        </a>
-      </header>
+          <div
+            className={darkMode ? 'toggle toggled' : 'toggle'}
+          >
+          </div>
+        </div>
+      </div>
+      <div id='body'>
+        <h1>Hello My App</h1>
+      </div>
     </div>
   );
 }
